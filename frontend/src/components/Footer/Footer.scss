@@ -36,15 +36,35 @@
 }
 
 .footerLinks {
-    margin-right: 1em; 
+    margin-right: 1rem;
+    margin-left: 12rem; 
 }
 .footerSection {
-    margin-right: 45rem;
+    margin-right: 1rem;
+    margin-left: 9rem;
 }
 
 .footerBottom {
-    margin-left: 10rem;
+    margin-left: 15rem;
     margin-top: 30px;
     text-align:center ;
     border-top: 1px solid #444;
 }
+
+.social-container {
+    display: flex;
+    justify-content: center; 
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease;
+  }
+  
+  .social-icon:hover {
+    transform: scale(1.1);
+  }
+  

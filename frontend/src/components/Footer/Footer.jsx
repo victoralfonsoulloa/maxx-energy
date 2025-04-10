@@ -14,6 +14,19 @@ export default function Footer() {
             </div>
           </div>
 
+          <div className="social-container">
+  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+    <img src="images/facebook.png" alt="Facebook" className="social-icon" />
+  </a>
+  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+    <img src="images/twitter.png" alt="Twitter" className="social-icon" />
+  </a>
+  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+    <img src="images/instagram.png" alt="Instagram" className="social-icon" />
+  </a>
+</div>
+
+
           <div className='footerLinks'>
             <h3>Quick Links</h3>
             <ul>
