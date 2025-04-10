@@ -1,0 +1,12 @@
+{
+  "name": "maxx-energy",
+  "version": "1.0.0",
+  "description": "- Start by pulling the latest version of the main branch to ensure your local repository is up to date.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
