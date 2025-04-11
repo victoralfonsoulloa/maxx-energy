@@ -1,5 +1,5 @@
 .footer {
-    background-color: #c2d6f3;
+    background-color: #0a0a0a;    
     padding: 2rem;
     border-radius: 3px;
     display: flex;
@@ -8,14 +8,13 @@
     justify-content: center;
     margin-top: 0;       
     padding-top: 0;
-    border: 1px solid blue;
 
 
 
     
 
 &:hover {
-    background-color: #92b1f0;
+    background-color: rgba(148, 0, 211, 0.2);
  }
 }
 
