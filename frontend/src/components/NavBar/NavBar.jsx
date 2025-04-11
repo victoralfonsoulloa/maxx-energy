@@ -35,9 +35,9 @@ export const NavBar = ({ menuOpen, setMenuOpen }) => {
             <Link to="#projects" className="text-gray-300 hover:text-white transition-colors">
               Projects
             </Link>
-            <Link to="#contact" className="text-gray-300 hover:text-white transition-colors">
+            <a href="mailto:info@maxxpotential.com" className="text-gray-300 hover:text-white transition-colors">
               Contact Us
-            </Link>
+            </a>
           </div>
         </div>
       </div>
