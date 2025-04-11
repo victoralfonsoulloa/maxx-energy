@@ -5,7 +5,7 @@ export default function Footer() {
         <div className='footerTop'>
           <div className='footerContainer'> 
             <div className='footerSection'>
-              <h3>Contact Us</h3>
+              <h3 style={{fontWeight:700}}>Contact Us</h3>
               <ul>
               <li>Email: <a href="mailto:info@maxxpotential.com">info@maxxpotential.com</a></li>
               <li>Phone: (xxx) xxx-xxxx</li>
@@ -28,7 +28,7 @@ export default function Footer() {
 
 
           <div className='footerLinks'>
-            <h3>Quick Links</h3>
+            <h3 style={{fontWeight:700}}>Quick Links</h3>
             <ul>
               <li><a href="/">Home</a></li>
               <li><a href="/about">About Us</a></li>
