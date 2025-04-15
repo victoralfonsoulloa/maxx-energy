@@ -12,19 +12,23 @@ const times = timeColumns.map(t => `"${t}"`).join(', ');
 exports.getAccounts = async (req, res) => {
     
     try {
-        const accountsResult = await db.query('SELECT DISTINCT "account_no" FROM "energy_data"');
+        const accountsResult = await db.query('SELECT DISTINCT "account_no", "type", "substation", "transformer", "zip_code" FROM "energy_data"');
+        
         const userRole = req.query.role || 'Staff';
-        let accounts;
-        if(userRole === "Staff")
-            accounts = accountsResult.rows.map(row => ({
-                account_no: maskAccountNumber(row.account_no)
-            }));
-        else if(userRole === "Executive"){
-            accounts = accountsResult.rows.map(row => ({
-                account_no: row.account_no
-            }));
-        }
-        res.json(accounts)
+
+        const accounts = accountsResult.rows.map(row => ({
+            account_info: {
+                account_no: userRole === 'Executive'? row.account_no: maskAccountNumber(row.account_no),
+                type: row.type,
+                substation: row.substation,
+                transformer: row.transformer
+            },
+            location: {
+                zip_code: row.zip_code
+            }
+        }));
+
+        res.json(accounts);
     } catch (err) {
         res.status(500).json({error: err.message});
     }
@@ -56,7 +60,7 @@ exports.getAccountUsage = async (req, res) => {
         const query = `SELECT "account_no", ${times}, substation, transformer FROM "energy_data" WHERE "date" >=$1 AND "date" <= $2 AND "account_no" = $3`
         const values = [start_date, end_date, account_no];
         const accountsResult = await db.query(query, values);
-        const userRole = req.query.role || 'staff';
+        const userRole = req.query.role || 'Staff';
         let accounts;
         if(userRole === "Staff")
             accounts = accountsResult.rows.map(row => ({
