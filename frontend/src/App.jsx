@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import { NavBar } from './components/NavBar/NavBar.jsx';
 import Footer from './components/Footer/Footer.jsx';
-import MainContent from './components/MainContent/MainContent.jsx';
+import { MainContent } from './components/MainContent/MainContent.jsx';
 import FAQSection from './components/FAQ/Faq.jsx';
 import ContactForm from './components/ContactForm/ContactForm.jsx';
 import AboutUs from './components/AboutUs.jsx';
@@ -17,6 +17,7 @@ function App() {
 
   return (
     <AuthProvider>
+      <MainContent />
       <Router>
         <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
@@ -25,7 +26,6 @@ function App() {
             path="/"
             element={
               <>
-                <MainContent />
                 <FAQSection />
                 <ContactForm />
               </>
