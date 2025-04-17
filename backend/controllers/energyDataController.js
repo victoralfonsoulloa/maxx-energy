@@ -10,9 +10,13 @@ const timeColumns = [
 ];
 const times = timeColumns.map(t => `"${t}"`).join(', ');  
 exports.getAccounts = async (req, res) => {
-    
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const offset = (page - 1)*limit
     try {
-        const accountsResult = await db.query('SELECT DISTINCT "account_no", "type", "substation", "transformer", "zip_code" FROM "energy_data"');
+        const accountsResult = await db.query('SELECT DISTINCT "account_no", "type", "substation", "transformer", "zip_code" FROM "energy_data" ORDER BY "account_no" LIMIT $1 OFFSET $2', [limit, offset]
+
+        );
         
         const userRole = req.query.role || 'Staff';
 
@@ -28,49 +32,67 @@ exports.getAccounts = async (req, res) => {
             }
         }));
 
-        res.json(accounts);
+        res.json({accounts:accounts});
     } catch (err) {
         res.status(500).json({error: err.message});
     }
 };
-
-exports.getSubstations = async (req, res) => {
-    
+exports.getDistinctAccounts = async (req, res) => {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const offset = (page - 1)*limit
     try {
-        const substationsResult = await db.query('SELECT DISTINCT "substation" FROM "energy_data"');
-        const transformersResult = await db.query('SELECT DISTINCT "transformer" FROM "energy_data"');
-        let substations;
-        substations = substationsResult.rows.map(rows => ({
-            substation: rows.substation
+        const accountsResult = await db.query('SELECT DISTINCT "account_no" FROM "energy_data" ORDER BY "account_no" LIMIT $1 OFFSET $2', [limit, offset]);
+        
+        const userRole = req.query.role || 'Staff';
+
+        const accounts = accountsResult.rows.map(row => ({
+            account_info: {
+                account_no: userRole === 'Executive'? row.account_no: maskAccountNumber(row.account_no),
+            },
         }));
-        let transformers;
-        transformers = transformersResult.rows.map(rows => ({
-            transformer: rows.transformers
-        }));
-    
-        res.json(accounts)
+
+        res.json({accounts:accounts});
+    } catch (err) {
+        res.status(500).json({error: err.message});
+    }
+};
+exports.getSubstations = async (req, res) => {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const offset = (page - 1)*limit
+    try {
+        const substationsResult = await db.query('SELECT DISTINCT "substation", "transformer" FROM "energy_data" LIMIT $1 OFFSET $2', [limit, offset]);
+        
+        
+        const substations = substationsResult.rows.map(row => ({
+            substation_details: {
+                substation: row.substation,
+                transformer: row.transformer,
+                zip_code: row.zip_code
+            }}));
+        
+        res.json({substations: substations})
     } catch (err) {
         res.status(500).json({error: err.message});
     }
 };
 
 exports.getAccountUsage = async (req, res) => {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const offset = (page - 1)*limit
     const {account_no, start_date, end_date} = req.query;
     try {
-        const query = `SELECT "account_no", ${times}, substation, transformer FROM "energy_data" WHERE "date" >=$1 AND "date" <= $2 AND "account_no" = $3`
-        const values = [start_date, end_date, account_no];
+        const query = `SELECT "account_no", ${times}, "substation", "transformer" FROM "energy_data" WHERE "date" >=$1 AND "date" <= $2 AND "account_no" = $3 LIMIT $4 OFFSET $5`
+        const values = [start_date, end_date, account_no, limit, offset];
         const accountsResult = await db.query(query, values);
         const userRole = req.query.role || 'Staff';
-        let accounts;
-        if(userRole === "Staff")
-            accounts = accountsResult.rows.map(row => ({
-                ...row, account_no: maskAccountNumber(row.account_no)
+        
+        accounts = accountsResult.rows.map(row => ({
+                ...row, account_no: userRole == 'Executive'? row.account_no : maskAccountNumber(row.account_no)
             }));
-        else if(userRole === "Executive"){
-            accounts = accountsResult.rows.map(row => ({
-                ...row, account_no: row.account_no
-            }));
-        }
+
         res.json({
             usage_details: {
             date_range: {
