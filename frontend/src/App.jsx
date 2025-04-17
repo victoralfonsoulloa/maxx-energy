@@ -1,25 +1,39 @@
 import './App.css';
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import { NavBar } from './components/NavBar/NavBar.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import MainContent from './components/MainContent/MainContent.jsx';
 import AboutUs from './components/AboutUs.jsx';
-import DataPage from './components/DataPage'; 
+import DataPage from './components/DataPage.jsx';
+import { AuthProvider } from './components/authContext.jsx';
+import ProtectedRoute from './components/ProtectedRoute.jsx'; // ✅ Added
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <Router>
-      <NavBar />
+    <AuthProvider>
+      <Router>
+        <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
-      <Routes>
-        <Route path="/" element={<MainContent />} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/data" element={<DataPage />} /> {/* optional */}
-      </Routes>
+        <Routes>
+          <Route path="/" element={<MainContent />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route
+            path="/data"
+            element={
+              <ProtectedRoute>
+                <DataPage />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
 
-      <Footer />
-    </Router>
+        <Footer />
+      </Router>
+    </AuthProvider>
   );
 }
 
