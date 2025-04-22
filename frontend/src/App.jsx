@@ -9,6 +9,8 @@ import ContactForm from './components/ContactForm/ContactForm.jsx';
 import AboutUs from './components/AboutUs.jsx';
 import DataPage from './components/DataPage.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
+import PasswordResetForm from './components/PasswordResetForm.jsx';
+
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/login" element={<LoginForm />} />
+        <Route path="/reset-password" element={<PasswordResetForm />} />
+
         <Route
           path="/data"
           element={
