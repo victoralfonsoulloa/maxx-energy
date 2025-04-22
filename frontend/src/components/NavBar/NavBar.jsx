@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { Link } from 'react-router-dom';
-import { useAuth } from '../authContext.jsx'; // ✅ Add this
+import { useAuth } from '../authContext.jsx';
 
 export const NavBar = ({ menuOpen, setMenuOpen }) => {
-  const { isAuthenticated, login, logout } = useAuth();
+  const { isAuthenticated, logout } = useAuth();
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -13,7 +13,6 @@ export const NavBar = ({ menuOpen, setMenuOpen }) => {
     <nav className="fixed top-0 w-full z-40 bg-[rgba(10, 10, 10, 0.8)] backdrop-blur-lg border-b border-white/10 shadow-lg">
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
           <div>
             <img
               className="h-8 w-auto"
@@ -40,21 +39,27 @@ export const NavBar = ({ menuOpen, setMenuOpen }) => {
               Projects
             </Link>
             <Link to="/data" className="text-gray-300 hover:text-white transition-colors">
-                Data
+              Data
             </Link>
-
             <a href="mailto:info@maxxpotential.com" className="text-gray-300 hover:text-white transition-colors">
               Contact Us
             </a>
 
-
-            {/* 🔓 Login/Logout Button */}
-            <button
-              onClick={isAuthenticated ? logout : login}
-              className="ml-4 px-4 py-1 bg-white text-black rounded hover:bg-gray-200 transition"
-            >
-              {isAuthenticated ? 'Logout' : 'Login'}
-            </button>
+            {isAuthenticated ? (
+              <button
+                onClick={logout}
+                className="ml-4 px-4 py-1 bg-white text-black rounded hover:bg-gray-200 transition"
+              >
+                Logout
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                className="ml-4 px-4 py-1 bg-white text-black rounded hover:bg-gray-200 transition"
+              >
+                Login
+              </Link>
+            )}
           </div>
         </div>
       </div>
