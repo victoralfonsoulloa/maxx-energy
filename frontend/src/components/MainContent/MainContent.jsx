@@ -27,8 +27,15 @@ export const MainContent = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-cover bg-center"
+      style={{
+        backgroundImage: "url('./background-main.avif')",
+      }}
     >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black opacity-50 z-0"></div>
+
+      {/* Particles */}
       <Particles id="tsparticles" className="absolute inset-0 z-0" />
 
       <RevealOnScroll>
