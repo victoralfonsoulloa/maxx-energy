@@ -1,8 +1,9 @@
 import React from 'react';
+import './Footer.scss';
 
 export default function Footer() {
   return (
-    <footer className="bg-primary text-secondary py-10">
+    <footer className="py-10">
       <div className="flex flex-col md:flex-row justify-center md:justify-around w-full gap-8">
         {/* Contact Us Section */}
         <nav className="text-center flex-1">
