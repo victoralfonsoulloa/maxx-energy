@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from './authContext.jsx';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function LoginForm() {
   const [email, setEmail] = useState('');
@@ -101,7 +101,14 @@ export default function LoginForm() {
         >
           {isLoading ? 'Logging in...' : 'Log In'}
         </button>
+
+        <p className="text-center text-sm mt-4 text-white">
+          Not a user?{' '}
+          <Link to="/signup" className="text-yellow-500 hover:underline">
+            Sign up here
+          </Link>
+        </p>
       </form>
     </div>
   );
-}  
+}
