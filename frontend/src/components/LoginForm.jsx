@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from './authContext.jsx';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function LoginForm() {
   const [email, setEmail] = useState('');
@@ -55,19 +55,26 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0a0a0a] to-gray-900">
+    <div
+      className="min-h-screen flex items-center justify-center relative bg-cover bg-center"
+      style={{
+        backgroundImage: "url('./background-login.jpg')",
+      }}
+    >
+      <div className="absolute inset-0 bg-black opacity-50 z-0"></div>
+      
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-md bg-white/10 backdrop-blur-md p-8 rounded-xl shadow-lg text-white border border-white/10"
+        className="w-full max-w-md bg-white/10 backdrop-blur-md p-8 rounded-xl shadow-lg text-white border border-white/10 z-10"
       >
         <h2 className="text-3xl font-bold mb-6 text-center text-yellow-500">
           Log In
         </h2>
-  
+
         {loginError && (
           <p className="text-red-400 text-sm text-center mb-4">{loginError}</p>
         )}
-  
+
         <div className="mb-4">
           <label className="block mb-1 text-sm text-white">Email</label>
           <input
@@ -80,7 +87,7 @@ export default function LoginForm() {
             <p className="text-red-400 text-xs mt-1">{errors.email}</p>
           )}
         </div>
-  
+
         <div className="mb-6">
           <label className="block mb-1 text-sm text-white">Password</label>
           <input
@@ -93,7 +100,7 @@ export default function LoginForm() {
             <p className="text-red-400 text-xs mt-1">{errors.password}</p>
           )}
         </div>
-  
+
         <button
           type="submit"
           disabled={isLoading}
@@ -101,13 +108,20 @@ export default function LoginForm() {
         >
           {isLoading ? 'Logging in...' : 'Log In'}
         </button>
+
         <p className="mt-4 text-sm text-center">
           <a href="/reset-password" className="text-yellow-400 hover:underline">
             Forgot password?
           </a>
         </p>
 
+        <p className="text-center text-sm mt-4 text-white">
+          Not a user?{' '}
+          <Link to="/signup" className="text-yellow-500 hover:underline">
+            Sign up here
+          </Link>
+        </p>
       </form>
     </div>
   );
-}  
+}
