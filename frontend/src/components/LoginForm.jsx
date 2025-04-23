@@ -109,6 +109,12 @@ export default function LoginForm() {
           {isLoading ? 'Logging in...' : 'Log In'}
         </button>
 
+        <p className="mt-4 text-sm text-center">
+          <a href="/reset-password" className="text-yellow-400 hover:underline">
+            Forgot password?
+          </a>
+        </p>
+
         <p className="text-center text-sm mt-4 text-white">
           Not a user?{' '}
           <Link to="/signup" className="text-yellow-500 hover:underline">
