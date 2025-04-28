@@ -23,7 +23,6 @@ function App() {
             <>
               <MainContent />
               <FAQSection />
-              <ContactForm />
             </>
           }
         />
@@ -31,7 +30,7 @@ function App() {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/reset-password" element={<PasswordResetForm />} />
         <Route path="/signup" element={<RegisterForm />} />
-        <Route path="/signup" element={<RegisterForm />} />
+        <Route path="/contact" element={<ContactForm />} />
         <Route
           path="/data"
           element={

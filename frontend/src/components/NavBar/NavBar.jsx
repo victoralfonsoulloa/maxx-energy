@@ -36,7 +36,7 @@ export const NavBar = ({ menuOpen, setMenuOpen }) => {
               About Us
             </Link>
             <Link to="#projects" className="text-gray-300 hover:text-white transition-colors">
-              Projects
+              Services
             </Link>
             
             {isAuthenticated && (
@@ -44,10 +44,10 @@ export const NavBar = ({ menuOpen, setMenuOpen }) => {
                 Data
               </Link>
             )}
-            
-            <a href="/contact" className="text-gray-300 hover:text-white transition-colors">
+
+            <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">
               Contact Us
-            </a>
+            </Link>
 
             {isAuthenticated ? (
               <button

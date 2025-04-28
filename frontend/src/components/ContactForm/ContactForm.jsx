@@ -38,9 +38,7 @@ const ContactForm = () => {
     e.preventDefault();
     const errors = validateForm();
     if (Object.keys(errors).length === 0) {
-      // Simulate form submission success
       setIsSubmitted(true);
-      // Clear form
       setFormData({ name: '', email: '', message: '' });
     } else {
       setFormErrors(errors);
@@ -48,7 +46,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="py-8 px-4 mx-auto max-w-screen-md">
+    <section className="pt-20 py-8 px-4 mx-auto max-w-screen-md">
       <h2 className="text-4xl tracking-tight font-extrabold text-white mb-8">
         Contact Maxx Energy
       </h2>

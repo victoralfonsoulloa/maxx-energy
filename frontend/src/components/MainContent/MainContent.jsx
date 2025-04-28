@@ -52,7 +52,7 @@ export const MainContent = () => {
           </p>
           <div className="flex justify-center space-x-4">
             <a
-              href="#contact"
+              href="/contact"
               className="border border-yellow-500/50 text-yellow-500 py-3 px-6 rounded font-medium transition-all duration-200 
   hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59, 130, 246, 0.2)] hover:bg-blue-500/10"
             >
