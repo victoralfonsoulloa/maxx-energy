@@ -40,9 +40,14 @@ export const NavBar = ({ menuOpen, setMenuOpen }) => {
             </Link>
             
             {isAuthenticated && (
-              <Link to="/data" className="text-gray-300 hover:text-white transition-colors">
-                Data
-              </Link>
+              <>
+                <Link to="/data" className="text-gray-300 hover:text-white transition-colors">
+                  Data
+                </Link>
+                <Link to="/profile" className="text-gray-300 hover:text-white transition-colors">
+                  Profile
+                </Link>
+              </>
             )}
 
             <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">

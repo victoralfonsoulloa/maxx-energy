@@ -11,6 +11,7 @@ import AboutUs from './components/AboutUs.jsx';
 import DataPage from './components/DataPage.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import PasswordResetForm from './components/PasswordResetForm.jsx';
+import UserProfile from './components/UserProfile/UserProfile.jsx';
 
 function App() {
   return (
@@ -36,6 +37,14 @@ function App() {
           element={
             <ProtectedRoute>
               <DataPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <UserProfile />
             </ProtectedRoute>
           }
         />
