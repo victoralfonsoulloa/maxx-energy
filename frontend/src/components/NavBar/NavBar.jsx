@@ -38,10 +38,14 @@ export const NavBar = ({ menuOpen, setMenuOpen }) => {
             <Link to="#projects" className="text-gray-300 hover:text-white transition-colors">
               Projects
             </Link>
-            <Link to="/data" className="text-gray-300 hover:text-white transition-colors">
-              Data
-            </Link>
-            <a href="mailto:info@maxxpotential.com" className="text-gray-300 hover:text-white transition-colors">
+            
+            {isAuthenticated && (
+              <Link to="/data" className="text-gray-300 hover:text-white transition-colors">
+                Data
+              </Link>
+            )}
+            
+            <a href="/contact" className="text-gray-300 hover:text-white transition-colors">
               Contact Us
             </a>
 

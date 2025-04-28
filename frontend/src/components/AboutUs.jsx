@@ -6,7 +6,7 @@ export default function AboutUs() {
     <div className="about-us bg-[#0a0a0a] text-white py-16 px-8 flex flex-col justify-center items-center">
       <div className="container max-w-4xl mx-auto">
 
-        <section className="intro mb-12 mt-16 p-6 rounded-lg border border-animated transition ease-in-out duration-300 hover:bg-[rgba(255,99,71,0.2)]">
+        <section className="intro mb-12 mt-16 p-6 rounded-lg border border-animated transition ease-in-out duration-300 hover:bg-[rgba(70,130,180,0.2)]">
           <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-yellow-500 to-blue-500 bg-clip-text text-transparent">About Us</h1>
           <p className="text-lg leading-relaxed">
             Welcome to Maxx Energy, where cutting-edge technology meets sustainable solutions.
@@ -24,7 +24,7 @@ export default function AboutUs() {
           </p>
         </section>
 
-        <section className="what-we-do mb-12 p-6 rounded-lg border border-animated transition ease-in-out duration-300 hover:bg-[rgba(34,193,195,0.2)]">
+        <section className="what-we-do mb-12 p-6 rounded-lg border border-animated transition ease-in-out duration-300 hover:bg-[rgba(70,130,180,0.2)]">
           <h3 className="text-3xl font-semibold mb-4 bg-gradient-to-r from-yellow-500 to-blue-500 bg-clip-text text-transparent">What We Do</h3>
           <p className="text-lg leading-relaxed">
             Maxx Energy offers a comprehensive suite of renewable energy solutions, including solar, wind, 
@@ -33,7 +33,7 @@ export default function AboutUs() {
           </p>
         </section>
 
-        <section className="approach mb-12 p-6 rounded-lg border border-animated transition ease-in-out duration-300 hover:bg-[rgba(255,140,0,0.2)]">
+        <section className="approach mb-12 p-6 rounded-lg border border-animated transition ease-in-out duration-300 hover:bg-[rgba(70,130,180,0.2)]">
           <h4 className="text-3xl font-semibold mb-4 bg-gradient-to-r from-yellow-500 to-blue-500 bg-clip-text text-transparent">Our Approach</h4>
           <p className="text-lg leading-relaxed">
             We take a holistic approach to energy management, focusing on innovation, sustainability, and community engagement. 
@@ -41,7 +41,7 @@ export default function AboutUs() {
           </p>
         </section>
 
-        <section className="impact mb-12 p-6 rounded-lg border border-animated transition ease-in-out duration-300 hover:bg-[rgba(255,223,186,0.2)]">
+        <section className="impact mb-12 p-6 rounded-lg border border-animated transition ease-in-out duration-300 hover:bg-[rgba(70,130,180,0.2)]">
           <h5 className="text-3xl font-semibold mb-4 bg-gradient-to-r from-yellow-500 to-blue-500 bg-clip-text text-transparent">Our Impact</h5>
           <p className="text-lg leading-relaxed">
             Since our inception, Maxx Energy has helped countless businesses and homes transition to renewable energy, 
@@ -49,7 +49,7 @@ export default function AboutUs() {
           </p>
         </section>
 
-        <section className="team mb-12 p-6 rounded-lg border border-animated transition ease-in-out duration-300 hover:bg-[rgba(0,255,127,0.2)]">
+        <section className="team mb-12 p-6 rounded-lg border border-animated transition ease-in-out duration-300 hover:bg-[rgba(70,130,180,0.2)]">
           <h5 className="text-3xl font-semibold mb-4 bg-gradient-to-r from-yellow-500 to-blue-500 bg-clip-text text-transparent">Meet the Team</h5>
           <div className="team-grid grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="team-member text-center">
@@ -67,7 +67,7 @@ export default function AboutUs() {
           </div>
         </section>
 
-        <section className="join-us mb-12 p-6 rounded-lg border border-animated transition ease-in-out duration-300 hover:bg-[rgba(255,165,0,0.2)]">
+        <section className="join-us mb-12 p-6 rounded-lg border border-animated transition ease-in-out duration-300 hover:bg-[rgba(70,130,180,0.2)]">
           <h6 className="text-3xl font-semibold mb-4 bg-gradient-to-r from-yellow-500 to-blue-500 bg-clip-text text-transparent">Join Us</h6>
           <p className="text-lg leading-relaxed">
             Whether you’re looking to transition to clean energy or seeking a partner for your energy needs, Maxx Energy is here to help. 
