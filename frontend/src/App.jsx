@@ -11,6 +11,7 @@ import AboutUs from './components/AboutUs.jsx';
 import DataPage from './components/DataPage.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import PasswordResetForm from './components/PasswordResetForm.jsx';
+import UserProfile from './components/UserProfile/UserProfile.jsx';
 
 function App() {
   return (
@@ -23,7 +24,6 @@ function App() {
             <>
               <MainContent />
               <FAQSection />
-              <ContactForm />
             </>
           }
         />
@@ -31,11 +31,20 @@ function App() {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/reset-password" element={<PasswordResetForm />} />
         <Route path="/signup" element={<RegisterForm />} />
+        <Route path="/contact" element={<ContactForm />} />
         <Route
           path="/data"
           element={
             <ProtectedRoute>
               <DataPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <UserProfile />
             </ProtectedRoute>
           }
         />
