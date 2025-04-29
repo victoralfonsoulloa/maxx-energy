@@ -10,8 +10,8 @@ export default function Footer() {
           <h6 className="text-xl font-bold mb-4 text-yellow-500">Contact Us</h6>
           <ul className="space-y-2">
             <li>Email: <a href="mailto:info@maxxpotential.com" className="hover:text-blue-500">info@maxxpotential.com</a></li>
-            <li>Phone: (xxx) xxx-xxxx</li>
-            <li>Address: 123 Maxx Lane, Suite 100, YourCity, Country</li>
+            <li>Phone: 1-800-555-ENERGY</li>
+            <li>Address: 14321 Winter Breeze Dr, Midlothian, VA 23113</li>
           </ul>
         </nav>
 
