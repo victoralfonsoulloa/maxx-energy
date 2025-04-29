@@ -36,14 +36,23 @@ export const NavBar = ({ menuOpen, setMenuOpen }) => {
               About Us
             </Link>
             <Link to="#projects" className="text-gray-300 hover:text-white transition-colors">
-              Projects
+              Services
             </Link>
-            <Link to="/data" className="text-gray-300 hover:text-white transition-colors">
-              Data
-            </Link>
-            <a href="mailto:info@maxxpotential.com" className="text-gray-300 hover:text-white transition-colors">
+            
+            {isAuthenticated && (
+              <>
+                <Link to="/data" className="text-gray-300 hover:text-white transition-colors">
+                  Data
+                </Link>
+                <Link to="/profile" className="text-gray-300 hover:text-white transition-colors">
+                  Profile
+                </Link>
+              </>
+            )}
+
+            <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">
               Contact Us
-            </a>
+            </Link>
 
             {isAuthenticated ? (
               <button
