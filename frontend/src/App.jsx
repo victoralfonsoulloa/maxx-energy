@@ -12,6 +12,7 @@ import DataPage from './components/DataPage.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import PasswordResetForm from './components/PasswordResetForm.jsx';
 import UserProfile from './components/UserProfile/UserProfile.jsx';
+import Projects from './components/Projects/Projects.jsx';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           }
         />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/projects" element={<Projects />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/reset-password" element={<PasswordResetForm />} />
         <Route path="/signup" element={<RegisterForm />} />

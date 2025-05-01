@@ -41,8 +41,8 @@ export const NavBar = ({ menuOpen, setMenuOpen }) => {
             <NavLink to="/about" className={customClassName}>
               About Us
             </NavLink>
-            <NavLink to="/services" className={customClassName}>
-              Services
+            <NavLink to="/projects" className={customClassName}>
+              Projects
             </NavLink>
             
             {isAuthenticated && (
