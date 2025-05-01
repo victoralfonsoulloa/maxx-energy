@@ -1,0 +1,19 @@
+.projects-section {
+  position: relative;
+  min-height: 100vh; // Full viewport height
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+}
+
+@keyframes borderColorChange {
+  0% { border-color: #7393B3; }
+  50% { border-color: white; }
+  100% { border-color: #7393B3; }
+}
+
+.border-animated {
+  animation: borderColorChange 3s infinite;
+}

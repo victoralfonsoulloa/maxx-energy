@@ -1,4 +1,5 @@
 import React from 'react';
+import './Projects.scss'; // Import the SCSS file for custom styles
 
 const projects = [
   {
@@ -26,18 +27,26 @@ const projects = [
 
 export default function ProjectsSection() {
   return (
-    <section className="projects-section pt-24 pb-16 px-8 text-gray-100"> {/* Changed text color to gray-100 for better contrast */}
-      <div className="container max-w-screen-xl mx-auto">
+    <section
+      className="projects-section min-h-screen flex items-center justify-center pt-24 pb-16 px-8 text-gray-100"
+      style={{
+        backgroundImage: "url('/projects-bg.jpg')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      <div className="absolute inset-0 bg-black opacity-50 z-0"></div>
+      <div className="container max-w-screen-xl mx-auto relative z-10">
         <h2 className="text-4xl font-extrabold mb-12 text-center text-yellow-500">
           Our Projects
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
           {projects.map((project, index) => (
-            <div key={index} className="project-card rounded-lg shadow-lg overflow-hidden border border-gray-700 bg-gray-800"> {/* Changed background to gray-800 and border to gray-700 */}
+            <div key={index} className="project-card rounded-lg shadow-lg overflow-hidden border border-gray-700 bg-gray-800 border-animated">
               <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
               <div className="p-6">
-                <h3 className="text-2xl font-semibold mb-2 text-white">{project.title}</h3> {/* Changed to white text */}
-                <p className="text-gray-300 mb-4">{project.description}</p> {/* Changed to gray-300 for better readability */}
+                <h3 className="text-2xl font-semibold mb-2 text-white">{project.title}</h3>
+                <p className="text-gray-300 mb-4">{project.description}</p>
                 <p className="text-sm text-gray-400">
                   <strong>Location:</strong> {project.location}
                 </p>
