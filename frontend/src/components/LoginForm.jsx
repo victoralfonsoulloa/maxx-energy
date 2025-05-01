@@ -59,7 +59,7 @@ export default function LoginForm() {
       className="min-h-screen flex items-center justify-center relative bg-cover bg-center"
       style={{
         // ./background-login.jpg
-        backgroundImage: "url('projects-images/solar-farm-bg.jpg')",
+        backgroundImage: "url('/solar-farm-bg.jpg')",
       }}
     >
       <div className="absolute inset-0 bg-black opacity-50 z-0"></div>
