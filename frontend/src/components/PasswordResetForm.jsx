@@ -14,8 +14,11 @@ export default function PasswordResetForm() {
 
     await new Promise((resolve) => setTimeout(resolve, 1000));
     if (email === "user@example.com") {
-      setMessage("Check your email for reset instructions.");
-    } else {
+      setMessage(
+        `Reset link sent! Click here to continue: ` +
+        `http://localhost:5173/set-new-password?token=abc123`
+      );
+          } else {
       setError("This email is not registered.");
     }
 

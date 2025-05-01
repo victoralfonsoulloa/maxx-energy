@@ -15,6 +15,8 @@ const UserProfile = () => {
   const [userData, setUserData] = useState(mockUserData);
   const [editMode, setEditMode] = useState(false);
   const [formErrors, setFormErrors] = useState({});
+  const [successMsg, setSuccessMsg] = useState(''); // 🔥 new success message
+  const [isLoading, setIsLoading] = useState(false); // 🔥 new loading indicator
 
   // Function to handle input changes
   const handleInputChange = (e) => {
@@ -38,14 +40,22 @@ const UserProfile = () => {
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true); // 🔥 show loading
     const errors = validateForm();
-    if (Object.keys(errors).length === 0) {
-      // Simulate saving changes
-      setEditMode(false);
-      console.log('Profile updated:', userData);
-    } else {
-      setFormErrors(errors);
-    }
+
+    setTimeout(() => { // simulate saving delay
+      if (Object.keys(errors).length === 0) {
+        // Simulate saving changes
+        setEditMode(false);
+        console.log('Profile updated:', userData);
+        setSuccessMsg('Profile updated successfully! ✅');
+        setFormErrors({});
+      } else {
+        setFormErrors(errors);
+        setSuccessMsg('');
+      }
+      setIsLoading(false); // 🔥 stop loading
+    }, 1000);
   };
 
   if (!isAuthenticated) {
@@ -59,6 +69,11 @@ const UserProfile = () => {
           <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-yellow-500 to-blue-500 bg-clip-text text-transparent">
             User Profile
           </h1>
+
+          {/* Success or loading messages */}
+          {isLoading && <p className="text-yellow-400 mb-4">Saving changes...</p>}
+          {successMsg && <p className="text-green-400 mb-4">{successMsg}</p>}
+
           {editMode ? (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
@@ -96,13 +111,14 @@ const UserProfile = () => {
               </div>
               <button
                 type="submit"
-                className="mt-4 w-full bg-yellow-500 text-black font-semibold py-2 rounded hover:bg-yellow-400"
+                disabled={isLoading}
+                className="mt-4 w-full bg-yellow-500 text-black font-semibold py-2 rounded hover:bg-yellow-400 transition disabled:opacity-50"
               >
-                Save Changes
+                {isLoading ? 'Saving...' : 'Save Changes'}
               </button>
               <button
                 type="button"
-                onClick={() => setEditMode(false)}
+                onClick={() => { setEditMode(false); setFormErrors({}); setSuccessMsg(''); }}
                 className="w-full bg-gray-300 text-black py-2 rounded hover:bg-gray-400 mt-2"
               >
                 Cancel
