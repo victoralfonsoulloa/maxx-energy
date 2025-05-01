@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useAuth } from '../authContext.jsx';
 
 export const NavBar = ({ menuOpen, setMenuOpen }) => {
@@ -8,6 +8,12 @@ export const NavBar = ({ menuOpen, setMenuOpen }) => {
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
   }, [menuOpen]);
+
+  const customClassName = ({isActive}) => {
+    const baseClasses = "text-gray-300 hover:text-white transition-colors";
+    const activeClasses = isActive ? "font-bold bg-gradient-to-r from-yellow-500 to-blue-500 bg-clip-text text-transparent" : "";
+    return `${baseClasses} ${activeClasses}`;
+  }
 
   return (
     <nav className="fixed top-0 w-full z-40 bg-[rgba(10, 10, 10, 0.8)] backdrop-blur-lg border-b border-white/10 shadow-lg">
@@ -29,45 +35,45 @@ export const NavBar = ({ menuOpen, setMenuOpen }) => {
           </div>
 
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-gray-300 hover:text-white transition-colors">
+            <NavLink to="/" className={customClassName}>
               Homepage
-            </Link>
-            <Link to="/about" className="text-gray-300 hover:text-white transition-colors">
+            </NavLink>
+            <NavLink to="/about" className={customClassName}>
               About Us
-            </Link>
-            <Link to="#projects" className="text-gray-300 hover:text-white transition-colors">
-              Services
-            </Link>
+            </NavLink>
+            <NavLink to="/projects" className={customClassName}>
+              Projects
+            </NavLink>
             
             {isAuthenticated && (
               <>
-                <Link to="/data" className="text-gray-300 hover:text-white transition-colors">
+                <NavLink to="/data" className={customClassName}>
                   Data
-                </Link>
-                <Link to="/profile" className="text-gray-300 hover:text-white transition-colors">
+                </NavLink>
+                <NavLink to="/profile" className={customClassName}>
                   Profile
-                </Link>
+                </NavLink>
               </>
             )}
 
-            <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">
+            <NavLink to="/contact" className={customClassName}>
               Contact Us
-            </Link>
+            </NavLink>
 
             {isAuthenticated ? (
               <button
                 onClick={logout}
-                className="ml-4 px-4 py-1 bg-white text-black rounded hover:bg-gray-200 transition"
+                className={customClassName}
               >
                 Logout
               </button>
             ) : (
-              <Link
+              <NavLink
                 to="/login"
-                className="ml-4 px-4 py-1 bg-white text-black rounded hover:bg-gray-200 transition"
+                className={customClassName}
               >
                 Login
-              </Link>
+              </NavLink>
             )}
           </div>
         </div>

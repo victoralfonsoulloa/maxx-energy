@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Map from "../Map/Map"
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -111,6 +112,7 @@ const ContactForm = () => {
           Thank you for your message! We will get back to you soon.
         </div>
       )}
+      <Map address="14321 Winter Breeze Dr, Midlothian, VA 23113" />
     </section>
   );
 };
