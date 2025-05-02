@@ -1,4 +1,4 @@
-import { RevealOnScroll } from '../../RevealOnScroll';
+import { RevealOnScroll } from '../RevealOnScroll/RevealOnScroll';
 import { useEffect } from 'react';
 import Particles from 'react-tsparticles';
 

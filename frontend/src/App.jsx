@@ -1,19 +1,21 @@
-import './App.css';
+import './styles/app.css';
 import { Routes, Route } from 'react-router-dom';
-import LoginForm from './components/LoginForm.jsx';
+import LoginForm from './components/LoginForm/LoginForm.jsx';
 import RegisterForm from './components/RegisterForm/RegisterForm.jsx';
 import { MainContent } from './components/MainContent/MainContent.jsx';
 import { NavBar } from './components/NavBar/NavBar.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import FAQSection from './components/FAQ/Faq.jsx';
 import ContactForm from './components/ContactForm/ContactForm.jsx';
-import AboutUs from './components/AboutUs.jsx';
-import DataPage from './components/DataPage.jsx';
-import ProtectedRoute from './components/ProtectedRoute.jsx';
-import PasswordResetForm from './components/PasswordResetForm.jsx';
-import SetNewPassword from './components/setNewPassword.jsx';
+import AboutUs from './components/AboutUs/AboutUs.jsx';
+import DataPage from './components/DataPage/DataPage.jsx';
+import ProtectedRoute from './components/Auth/ProtectedRoute.jsx';
+import PasswordResetForm from './components/PasswordManagement/PasswordResetForm.jsx';
+import SetNewPassword from './components/PasswordManagement/setNewPassword.jsx';
 import UserProfile from './components/UserProfile/UserProfile.jsx';
 import Projects from './components/Projects/Projects.jsx';
+import Services from './components/Services/Services.jsx';
+import PromotionalBanner from './components/PromotionalBanner/PromotionalBanner.jsx';
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
           element={
             <>
               <MainContent />
+              <Services />
+              <PromotionalBanner />
               <FAQSection />
             </>
           }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth } from '../authContext.jsx'; // Ensure this path is correct
+import { useAuth } from '../Auth/authContext.jsx'; // Ensure this path is correct
 
 const UserProfile = () => {
   const { isAuthenticated } = useAuth();
@@ -43,7 +43,8 @@ const UserProfile = () => {
     setIsLoading(true); // 🔥 show loading
     const errors = validateForm();
 
-    setTimeout(() => { // simulate saving delay
+    setTimeout(() => {
+      // simulate saving delay
       if (Object.keys(errors).length === 0) {
         // Simulate saving changes
         setEditMode(false);
@@ -59,7 +60,11 @@ const UserProfile = () => {
   };
 
   if (!isAuthenticated) {
-    return <p className="text-center text-lg text-white">Please log in to access your profile.</p>;
+    return (
+      <p className="text-center text-lg text-white">
+        Please log in to access your profile.
+      </p>
+    );
   }
 
   return (
@@ -71,7 +76,9 @@ const UserProfile = () => {
           </h1>
 
           {/* Success or loading messages */}
-          {isLoading && <p className="text-yellow-400 mb-4">Saving changes...</p>}
+          {isLoading && (
+            <p className="text-yellow-400 mb-4">Saving changes...</p>
+          )}
           {successMsg && <p className="text-green-400 mb-4">{successMsg}</p>}
 
           {editMode ? (
@@ -85,7 +92,9 @@ const UserProfile = () => {
                   onChange={handleInputChange}
                   className="w-full p-2 border border-gray-300 rounded"
                 />
-                {formErrors.name && <p className="text-red-500 text-sm">{formErrors.name}</p>}
+                {formErrors.name && (
+                  <p className="text-red-500 text-sm">{formErrors.name}</p>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium">Email</label>
@@ -96,7 +105,9 @@ const UserProfile = () => {
                   onChange={handleInputChange}
                   className="w-full p-2 border border-gray-300 rounded"
                 />
-                {formErrors.email && <p className="text-red-500 text-sm">{formErrors.email}</p>}
+                {formErrors.email && (
+                  <p className="text-red-500 text-sm">{formErrors.email}</p>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium">Phone</label>
@@ -107,7 +118,9 @@ const UserProfile = () => {
                   onChange={handleInputChange}
                   className="w-full p-2 border border-gray-300 rounded"
                 />
-                {formErrors.phone && <p className="text-red-500 text-sm">{formErrors.phone}</p>}
+                {formErrors.phone && (
+                  <p className="text-red-500 text-sm">{formErrors.phone}</p>
+                )}
               </div>
               <button
                 type="submit"
@@ -118,7 +131,11 @@ const UserProfile = () => {
               </button>
               <button
                 type="button"
-                onClick={() => { setEditMode(false); setFormErrors({}); setSuccessMsg(''); }}
+                onClick={() => {
+                  setEditMode(false);
+                  setFormErrors({});
+                  setSuccessMsg('');
+                }}
                 className="w-full bg-gray-300 text-black py-2 rounded hover:bg-gray-400 mt-2"
               >
                 Cancel
@@ -126,9 +143,15 @@ const UserProfile = () => {
             </form>
           ) : (
             <div>
-              <p><strong>Name:</strong> {userData.name}</p>
-              <p><strong>Email:</strong> {userData.email}</p>
-              <p><strong>Phone:</strong> {userData.phone}</p>
+              <p>
+                <strong>Name:</strong> {userData.name}
+              </p>
+              <p>
+                <strong>Email:</strong> {userData.email}
+              </p>
+              <p>
+                <strong>Phone:</strong> {userData.phone}
+              </p>
               <button
                 onClick={() => setEditMode(true)}
                 className="mt-4 w-full bg-yellow-500 text-black font-semibold py-2 rounded hover:bg-yellow-400"
