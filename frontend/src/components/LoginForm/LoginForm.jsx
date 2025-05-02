@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useAuth } from './authContext.jsx';
+import { useAuth } from '../Auth/authContext.jsx';
 import { useNavigate, Link } from 'react-router-dom';
 
 export default function LoginForm() {
@@ -20,7 +20,8 @@ export default function LoginForm() {
     else if (!emailRegex.test(email)) newErrors.email = 'Invalid email format';
 
     if (!password.trim()) newErrors.password = 'Password is required';
-    else if (password.length < 6) newErrors.password = 'Password must be at least 6 characters';
+    else if (password.length < 6)
+      newErrors.password = 'Password must be at least 6 characters';
 
     return newErrors;
   };
@@ -44,7 +45,7 @@ export default function LoginForm() {
 
       if (email === validEmail && password === validPassword) {
         setLoginError('');
-        login();         // context auth
+        login(); // context auth
         navigate('/data'); // redirect
       } else {
         setLoginError('Incorrect email or password');
@@ -63,7 +64,7 @@ export default function LoginForm() {
       }}
     >
       <div className="absolute inset-0 bg-black opacity-50 z-0"></div>
-      
+
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-md bg-white/10 backdrop-blur-md p-8 rounded-xl shadow-lg text-white border border-white/10 z-10"

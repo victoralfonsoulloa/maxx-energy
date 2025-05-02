@@ -1,19 +1,21 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useAuth } from '../authContext.jsx';
+import { useAuth } from '../Auth/authContext.jsx';
 
 export const NavBar = ({ menuOpen, setMenuOpen }) => {
   const { isAuthenticated, logout } = useAuth();
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
   }, [menuOpen]);
 
-  const customClassName = ({isActive}) => {
-    const baseClasses = "text-gray-300 hover:text-white transition-colors";
-    const activeClasses = isActive ? "font-bold bg-gradient-to-r from-yellow-500 to-blue-500 bg-clip-text text-transparent" : "";
+  const customClassName = ({ isActive }) => {
+    const baseClasses = 'text-gray-300 hover:text-white transition-colors';
+    const activeClasses = isActive
+      ? 'font-bold bg-gradient-to-r from-yellow-500 to-blue-500 bg-clip-text text-transparent'
+      : '';
     return `${baseClasses} ${activeClasses}`;
-  }
+  };
 
   return (
     <nav className="fixed top-0 w-full z-40 bg-[rgba(10, 10, 10, 0.8)] backdrop-blur-lg border-b border-white/10 shadow-lg">
@@ -44,7 +46,7 @@ export const NavBar = ({ menuOpen, setMenuOpen }) => {
             <NavLink to="/projects" className={customClassName}>
               Projects
             </NavLink>
-            
+
             {isAuthenticated && (
               <>
                 <NavLink to="/data" className={customClassName}>
@@ -61,17 +63,11 @@ export const NavBar = ({ menuOpen, setMenuOpen }) => {
             </NavLink>
 
             {isAuthenticated ? (
-              <button
-                onClick={logout}
-                className={customClassName}
-              >
+              <button onClick={logout} className={customClassName}>
                 Logout
               </button>
             ) : (
-              <NavLink
-                to="/login"
-                className={customClassName}
-              >
+              <NavLink to="/login" className={customClassName}>
                 Login
               </NavLink>
             )}
