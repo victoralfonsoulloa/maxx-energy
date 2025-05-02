@@ -14,6 +14,8 @@ import PasswordResetForm from './components/PasswordResetForm.jsx';
 import SetNewPassword from './components/setNewPassword.jsx';
 import UserProfile from './components/UserProfile/UserProfile.jsx';
 import Projects from './components/Projects/Projects.jsx';
+import Services from './components/Services/Services.jsx';
+import PromotionalBanner from './components/PromotionalBanner/PromotionalBanner.jsx';
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
           element={
             <>
               <MainContent />
+              <Services />
+              <PromotionalBanner />
               <FAQSection />
             </>
           }
