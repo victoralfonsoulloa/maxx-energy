@@ -16,6 +16,7 @@ import UserProfile from './components/UserProfile/UserProfile.jsx';
 import Projects from './components/Projects/Projects.jsx';
 import Services from './components/Services/Services.jsx';
 import PromotionalBanner from './components/PromotionalBanner/PromotionalBanner.jsx';
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -40,6 +41,8 @@ function App() {
         <Route path="/set-new-password" element={<SetNewPassword />} />
         <Route path="/signup" element={<RegisterForm />} />
         <Route path="/contact" element={<ContactForm />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+
 
         <Route
           path="/data"
