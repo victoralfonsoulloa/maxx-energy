@@ -92,6 +92,9 @@ exports.getAccountUsage = async (req, res) => {
         accounts = accountsResult.rows.map(row => ({
                 ...row, account_no: userRole == 'Executive'? row.account_no : maskAccountNumber(row.account_no)
             }));
+            
+            console.log("Accounts found:", accounts);
+            console.log("Query values:", values);
 
         res.json({
             usage_details: {
@@ -115,4 +118,3 @@ const maskAccountNumber = (accountNumber) => {
     return maskedCharts + visibleCharts;
     
 }
-

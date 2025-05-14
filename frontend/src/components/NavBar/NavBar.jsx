@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useAuth } from '../Auth/authContext.jsx';
+import { useAuth } from '../Auth/authContext.jsx'; // ✅ this path is correct
 
 export const NavBar = ({ menuOpen, setMenuOpen }) => {
   const { isAuthenticated, logout } = useAuth();
@@ -49,6 +49,9 @@ export const NavBar = ({ menuOpen, setMenuOpen }) => {
 
             {isAuthenticated && (
               <>
+                <NavLink to="/dashboard" className={customClassName}>
+                  Dashboard
+                </NavLink>
                 <NavLink to="/data" className={customClassName}>
                   Data
                 </NavLink>
