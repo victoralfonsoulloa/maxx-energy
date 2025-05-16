@@ -42,7 +42,7 @@ export default function DataPage() {
           <img
             src={selectedImage}
             alt="Zoomed"
-            className="max-w-full max-h-full rounded shadow-lg"
+            className="max-w-[90vw] max-h-[90vh] rounded shadow-lg"
           />
         </div>
       )}
