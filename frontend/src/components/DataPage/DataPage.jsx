@@ -21,7 +21,7 @@ export default function DataPage() {
 
   return (
     <div className="pt-20 px-6 max-w-6xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6 text-white-900 text-center">MAXX Energy Dashboard</h1>
+      <h1 className="text-3xl font-bold mb-6 text-white-900 text-center">MAXX Energy Data</h1>
 
       <div className="bg-white p-6 rounded shadow text-black">
         <iframe
