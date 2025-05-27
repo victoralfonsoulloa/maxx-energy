@@ -1,5 +1,5 @@
 export default function DataPage() {
-  const dashboardUrl = "https://lookerstudio.google.com/embed/reporting/2e3047b4-1fc9-406c-913f-07d39405f6da/page/5RXLF";
+  const dashboardUrl = "https://lookerstudio.google.com/embed/reporting/4d5638a2-4b2b-4bd5-8fa2-1f2c947e5147/page/LtXLF";
 
   const handleShare = (platform) => {
     const encodedUrl = encodeURIComponent(dashboardUrl);

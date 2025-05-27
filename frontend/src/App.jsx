@@ -16,12 +16,13 @@ import UserProfile from './components/UserProfile/UserProfile.jsx';
 import Projects from './components/Projects/Projects.jsx';
 import Services from './components/Services/Services.jsx';
 import PromotionalBanner from './components/PromotionalBanner/PromotionalBanner.jsx';
-import Dashboard from "./pages/Dashboard";
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
     <>
       <NavBar menuOpen={false} setMenuOpen={() => {}} />
+
       <Routes>
         <Route
           path="/"
@@ -37,13 +38,13 @@ function App() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/login" element={<LoginForm />} />
-        <Route path="/reset-password" element={<PasswordResetForm />} />
-        <Route path="/set-new-password" element={<SetNewPassword />} />
         <Route path="/signup" element={<RegisterForm />} />
         <Route path="/contact" element={<ContactForm />} />
+        <Route path="/reset-password" element={<PasswordResetForm />} />
+        <Route path="/set-new-password" element={<SetNewPassword />} />
         <Route path="/dashboard" element={<Dashboard />} />
 
-
+        {/* 🔒 Protected Routes */}
         <Route
           path="/data"
           element={
@@ -61,6 +62,7 @@ function App() {
           }
         />
       </Routes>
+
       <Footer />
     </>
   );
