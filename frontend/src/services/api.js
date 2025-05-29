@@ -1,9 +1,13 @@
-
 // Fetch energy usage data (staff/executive access)
 export const fetchEnergyUsage = async ({ account_no, start_date, end_date }) => {
   try {
+    const token = localStorage.getItem('token');
     const query = new URLSearchParams({ account_no, start_date, end_date }).toString();
-    const response = await fetch(`/api/v1/energyData/usage?${query}`);
+    const response = await fetch(`/api/v1/energyData/usage?${query}`, {
+      headers: {
+        ...(token && { Authorization: `Bearer ${token}` })
+      }
+    });
     if (!response.ok) throw new Error(`Error: ${response.status}`);
     return await response.json();
   } catch (err) {
@@ -15,7 +19,12 @@ export const fetchEnergyUsage = async ({ account_no, start_date, end_date }) => 
 // Fetch pricing analytics (executive only)
 export const fetchPricingAnalytics = async () => {
   try {
-    const response = await fetch('/api/v1/analytics/pricing');
+    const token = localStorage.getItem('token');
+    const response = await fetch('/api/v1/analytics/pricing', {
+      headers: {
+        ...(token && { Authorization: `Bearer ${token}` })
+      }
+    });
     if (!response.ok) throw new Error(`Error: ${response.status}`);
     return await response.json();
   } catch (err) {
@@ -27,7 +36,12 @@ export const fetchPricingAnalytics = async () => {
 // Fetch plant metadata (public)
 export const fetchPlantMetadata = async (plantId) => {
   try {
-    const response = await fetch(`/api/v1/plant/${plantId}`);
+    const token = localStorage.getItem('token');
+    const response = await fetch(`/api/v1/plant/${plantId}`, {
+      headers: {
+        ...(token && { Authorization: `Bearer ${token}` })
+      }
+    });
     if (!response.ok) throw new Error(`Error: ${response.status}`);
     return await response.json();
   } catch (err) {

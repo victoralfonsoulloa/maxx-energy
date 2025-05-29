@@ -26,40 +26,35 @@ export default function LoginForm() {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  const validationErrors = validate();
+  if (Object.keys(validationErrors).length > 0) {
+    setErrors(validationErrors);
+    setLoginError('');
+    return;
+  }
+
+  setErrors({});
+  setIsLoading(true);
+
+  setTimeout(async () => {
+    const result = await login(email, password);
+    if (result.success) {
       setLoginError('');
-      return;
+      navigate('/data');
+    } else {
+      setLoginError(result.error);
     }
+    setIsLoading(false);
+  }, 1000);
+};
 
-    setErrors({});
-    setIsLoading(true);
-
-    // Simulate async auth
-    setTimeout(() => {
-      const validEmail = 'user@example.com';
-      const validPassword = 'password123';
-
-      if (email === validEmail && password === validPassword) {
-        setLoginError('');
-        login(); // context auth
-        navigate('/data'); // redirect
-      } else {
-        setLoginError('Incorrect email or password');
-      }
-
-      setIsLoading(false);
-    }, 1000);
-  };
 
   return (
     <div
       className="min-h-screen flex items-center justify-center relative bg-cover bg-center"
       style={{
-        // ./background-login.jpg
         backgroundImage: "url('/solar-farm-bg.jpg')",
       }}
     >
