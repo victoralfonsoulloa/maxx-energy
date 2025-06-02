@@ -8,6 +8,12 @@ const PORT = process.env.PORT || 4000;
 // Middleware
 app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
 app.use(express.json());
+const compression = require('compression');
+const morgan = require('morgan');
+
+app.use(compression()); // compresses all responses
+app.use(morgan('dev')); // logs each request in the console
+
 
 // Routes
 const plantRoutes = require('./routes/plantRoutes');
