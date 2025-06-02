@@ -1,35 +1,24 @@
 import { useEffect, useState } from "react";
+import { fetchWithAuth } from "../utils/fetchWithAuth";
+
 
 export default function DataPage() {
   const dashboardUrl = "https://lookerstudio.google.com/embed/reporting/4d5638a2-4b2b-4bd5-8fa2-1f2c947e5147/page/LtXLF";
   const [energyData, setEnergyData] = useState(null);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    fetch("http://localhost:4000/api/v1/energyData/usage?account_no=12345&start_date=2024-01-01&end_date=2024-01-02", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json"
-      }
+useEffect(() => {
+  fetchWithAuth("http://localhost:4000/api/v1/energyData/usage?account_no=12345&start_date=2024-01-01&end_date=2024-01-02")
+    .then((data) => {
+      console.log("✅ Energy data fetched:", data);
+      setEnergyData(data);
     })
-      .then(async (res) => {
-        if (!res.ok) {
-          const msg = await res.text();
-          throw new Error(`Error ${res.status}: ${msg}`);
-        }
-        return res.json();
-      })
-      .then((data) => {
-        console.log("✅ Energy data fetched:", data);
-        setEnergyData(data);
-      })
-      .catch((err) => {
-        console.error("❌ Energy API error:", err.message);
-        setError(err.message);
-      });
-  }, []);
+    .catch((err) => {
+      console.error("❌ Energy API error:", err.message);
+      setError(err.message);
+    });
+}, []);
+
 
   const handleShare = (platform) => {
     const encodedUrl = encodeURIComponent(dashboardUrl);
