@@ -1,29 +1,7 @@
 import { RevealOnScroll } from '../RevealOnScroll/RevealOnScroll';
-import { useEffect } from 'react';
 import Particles from 'react-tsparticles';
 
 export const MainContent = () => {
-  useEffect(() => {
-    const loadParticles = async () => {
-      const particlesJS = (await import('tsparticles')).default;
-      particlesJS.load('tsparticles', {
-        particles: {
-          number: { value: 50 },
-          size: { value: 3 },
-          move: { speed: 1 },
-          opacity: { value: 0.1 },
-          color: { value: '#ffffff' },
-        },
-        interactivity: {
-          events: {
-            onhover: { enable: true, mode: 'repulse' },
-          },
-        },
-      });
-    };
-    loadParticles();
-  }, []);
-
   return (
     <section
       id="home"
@@ -36,7 +14,24 @@ export const MainContent = () => {
       <div className="absolute inset-0 bg-black opacity-50 z-0"></div>
 
       {/* Particles */}
-      <Particles id="tsparticles" className="absolute inset-0 z-0" />
+      <Particles
+        id="tsparticles"
+        className="absolute inset-0 z-0"
+        options={{
+          particles: {
+            number: { value: 50 },
+            size: { value: 3 },
+            move: { speed: 1 },
+            opacity: { value: 0.1 },
+            color: { value: '#ffffff' },
+          },
+          interactivity: {
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+            },
+          },
+        }}
+      />
 
       <RevealOnScroll>
         <div className="text-center z-10 px-4">
